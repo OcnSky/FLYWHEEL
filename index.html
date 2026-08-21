@@ -32,7 +32,8 @@ body{
     radial-gradient(ellipse 900px 560px at 88% 6%, rgba(123,78,13,.05), transparent 62%);
   background-attachment:fixed;
 }
-.wrap{max-width:1760px;margin:0 auto;padding:34px 34px 70px}
+#fitbox{overflow:hidden}
+.wrap{max-width:1760px;min-width:1300px;margin:0 auto;padding:34px 34px 70px;transform-origin:top left}
 
 /* ── masthead: 横向左右 ── */
 .mast{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr) auto;gap:40px;
@@ -51,7 +52,7 @@ h1 em{font-style:normal;color:var(--indigo)}
   text-align:right;margin-top:7px;white-space:nowrap}
 
 /* ── 主体：左 内环 · 中 阀门 · 右 外环 ── */
-.board{display:grid;grid-template-columns:minmax(0,1fr) 210px minmax(0,1fr);gap:26px;align-items:stretch}
+.board{display:grid;grid-template-columns:minmax(0,1fr) 152px minmax(0,1fr);gap:24px;align-items:stretch}
 .loop-col{display:flex;flex-direction:column;min-width:0}
 .ring-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
   border-bottom:2px solid var(--rh,var(--indigo));padding-bottom:9px;margin-bottom:10px}
@@ -122,22 +123,22 @@ svg.rotor{width:100%;height:auto;display:block;overflow:visible}
 .note b{color:var(--accent);font-weight:600}
 
 /* ── 中间阀门竖列 ── */
-.valve-col{background:#fbf7f3;border:1px solid rgba(156,74,24,.22);border-radius:4px;padding:26px 18px;
+.valve-col{background:#fbf7f3;border:1px solid rgba(156,74,24,.22);border-radius:4px;padding:24px 12px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
   box-shadow:0 1px 2px rgba(20,26,36,.04),0 14px 34px -26px rgba(156,74,24,.35)}
-.valve-col .lockmark{width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(156,74,24,.4);
-  background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-.valve-col .lockmark svg{width:17px;height:17px;stroke:var(--accent);fill:none;stroke-width:1.8}
-.valve-col h2{font-family:var(--serif);font-weight:700;font-size:19px;color:var(--ink);margin:0}
-.valve-col .vsub{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--accent);margin-top:5px}
-.valve-col .vtext{color:var(--ink-2);font-size:12px;line-height:1.65;margin:14px 0 4px}
+.valve-col .lockmark{width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(156,74,24,.4);
+  background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:11px}
+.valve-col .lockmark svg{width:15px;height:15px;stroke:var(--accent);fill:none;stroke-width:1.8}
+.valve-col h2{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--ink);margin:0;letter-spacing:.04em}
+.valve-col .vsub{font-family:var(--mono);font-size:8px;letter-spacing:.12em;color:var(--accent);margin-top:5px}
+.valve-col .vtext{color:var(--ink-2);font-size:11px;line-height:1.62;margin:12px 0 2px}
 .valve-col .vtext b{color:var(--ink);font-weight:600}
-.vgates{width:100%;display:flex;flex-direction:column;gap:7px;margin-top:14px}
-.vg{border:1px solid var(--hair-2);background:#fff;border-radius:3px;padding:8px 9px}
-.vg .n{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--accent)}
-.vg .t{font-weight:600;font-size:13px;color:var(--ink);margin-top:2px;letter-spacing:.01em}
-.vflow{width:100%;margin-top:16px;padding-top:13px;border-top:1px solid var(--hair);
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--ink-3);line-height:2}
+.vgates{width:100%;display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.vg{border:1px solid var(--hair-2);background:#fff;border-radius:3px;padding:7px 6px}
+.vg .n{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--accent)}
+.vg .t{font-weight:600;font-size:12px;color:var(--ink);margin-top:2px;letter-spacing:0;white-space:nowrap}
+.vflow{width:100%;margin-top:14px;padding-top:11px;border-top:1px solid var(--hair);
+  font-family:var(--mono);font-size:8.5px;letter-spacing:.02em;color:var(--ink-3);line-height:1.9}
 .vflow b{color:var(--accent);font-weight:600}
 .vflow .r{color:var(--ink)}
 
@@ -175,33 +176,15 @@ svg.rotor{width:100%;height:auto;display:block;overflow:visible}
 .footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--hair);color:var(--ink-3);
   font-size:11.5px;font-family:var(--mono);letter-spacing:.06em;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
-/* ── 窄屏回落为纵向 ── */
-@media (max-width:1400px){
-  .board{grid-template-columns:1fr;gap:22px}
-  .valve-col{flex-direction:row;flex-wrap:wrap;text-align:left;align-items:center;justify-content:flex-start;gap:18px;padding:20px 22px}
-  .valve-col .lockmark{margin-bottom:0}
-  .valve-col .vtext{margin:0;flex:1 1 300px;min-width:240px}
-  .vgates{flex-direction:row;flex:1 1 100%;margin-top:4px}
-  .vgates .vg{flex:1}
-  .vflow{border-top:none;padding-top:0;margin-top:6px;display:flex;gap:26px}
-  .rotor-wrap{max-width:560px}
-}
-@media (max-width:1100px){
-  .mast{grid-template-columns:1fr;gap:14px;align-items:start}
-  .stamp-sub{text-align:left}
-  .pcols{grid-template-columns:1fr;gap:0}
-  .grid4,.chassis-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media (max-width:680px){
-  .wrap{padding:24px 16px 50px}
-  .grid4,.chassis-grid,.vgates{grid-template-columns:1fr;flex-direction:column}
-  .vflow{flex-direction:column;gap:0}
-  .lname{font-size:21px}
+/* ── 横屏看板：任何宽度都保持左右三栏，窄屏横向滚动 ── */
+@media (max-width:1500px){
+  .board{grid-template-columns:minmax(0,1fr) 146px minmax(0,1fr);gap:20px}
+  .rotor-wrap{max-width:560px;padding:4px 24px 0}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div id="fitbox"><div class="wrap">
 
   <header class="mast">
     <div>
@@ -227,7 +210,7 @@ svg.rotor{width:100%;height:auto;display:block;overflow:visible}
         <h2>单一市场增长飞轮</h2>
         <span class="sub">Inner Loop · 5 Rings</span>
       </div>
-      <p class="ring-note">信任在<b>线下高浓度场景</b>中生产，在<b>线上广域触点</b>中分发，以<b>用户数据</b>为唯一接口。任一端缺失，飞轮退化为单向投放。</p>
+      <p class="ring-note">内环从品牌初期的三个标签起步——<b>我们做什么、我们的客户在哪里、我们的目标是什么</b>。三问锚定后，信任在<b>线下高浓度场景</b>中生产、在<b>线上广域触点</b>中分发，并以用户数据回流持续校准这三个答案。</p>
       <div class="rotor-wrap"><svg class="rotor" id="rotor-inner" viewBox="0 0 600 600" role="group" aria-label="内环 单一市场增长飞轮"></svg></div>
       <div class="panel" id="panel-inner"></div>
     </div>
@@ -247,8 +230,8 @@ svg.rotor{width:100%;height:auto;display:block;overflow:visible}
         <div class="vg"><div class="n">Gate 04</div><div class="t">组织能力达标</div></div>
       </div>
       <div class="vflow">
-        <div><span class="r">内环</span> <b>──▶</b> 四项达标 · 外环放量</div>
-        <div><span class="r">外环</span> <b>◀──</b> 经验回流 · 内环校准</div>
+        <div><span class="r">内环</span> <b>──▶</b> 达标放量</div>
+        <div><span class="r">外环</span> <b>◀──</b> 经验回流</div>
       </div>
     </aside>
 
@@ -320,19 +303,20 @@ svg.rotor{width:100%;height:auto;display:block;overflow:visible}
     <span>点击任一扇区查看详情 · 支持方向键切换</span>
   </div>
 </div>
+</div>
 
 <script>
 const INNER = [
-  { num:"01", name:"品牌锚定", en:"Brand Anchoring", hex:"#85a6e2",
-    parts:["品牌定位","产品体验设计","渠道触点选型"],
-    thesis:"确立品牌的差异化价值主张，并将其转译为可被感知的产品体验与可被触达的入口。",
-    actions:["<b>目标人群与需求场景界定</b>：明确为谁、在什么场景下解决什么问题",
-      "<b>价值主张与差异化支点提炼</b>：找到不可被轻易复制的那一个支点",
-      "<b>主张的产品化落地</b>：将抽象主张翻译为可被感知的体验触点",
-      "<b>线上线下触点组合假设</b>：以假设而非结论的形式提出渠道方案"],
-    outputs:["品牌定位陈述","体验触点蓝图","渠道优先级矩阵"],
-    gate:"<b>认知一致性检验</b>——目标用户在无提示条件下，能以自身语言复述品牌核心主张。若不能，说明主张停留于内部共识，尚未完成产品化转译。",
-    note:"渠道选型宜设为<b>待验证假设</b>而非既定结论：以 2–3 个候选触点低成本试跑，由第二环的真实反馈完成收口。" },
+  { num:"01", name:"品牌锚定", en:"Brand Anchoring · The Three Questions", hex:"#85a6e2",
+    parts:["我们做什么","我们的客户在哪里","我们的目标是什么"],
+    thesis:"把三件事说清楚且互不矛盾——做什么、客户在哪、要到哪。三问一旦对齐，产品、渠道与目标同时被锚定。",
+    actions:["<b>我们做什么</b>：收敛成一句话业务定义，并转译为可被感知的产品体验（差异化支点 + 记忆点）",
+      "<b>我们的客户在哪里</b>：明确核心人群与其真实出现的场景，据此反推线上线下触点组合",
+      "<b>我们的目标是什么</b>：定义本阶段要证明的<b>那一件事</b>，并给出可验收的达标线",
+      "<b>三问互检</b>：任一问的答案变了，另外两问必须同步修订，否则定位空转"],
+    outputs:["一句话业务定义（做什么）","核心人群 × 场景 × 触点地图（客户在哪里）","阶段目标与达标线（目标是什么）"],
+    gate:"<b>三问一致性检验</b>——团队三人分别回答三问，答案一致；且目标用户能用自己的话复述「你们是做什么的、为谁做的」。做不到，说明三问停留于内部共识，尚未完成产品化转译。",
+    note:"三问不是一次性文档，而是<b>整个内环的校准基准</b>：做什么 → 由第 02 环的现场体验验证；客户在哪里 → 由第 02 / 03 环的到场与分层数据验证；目标是什么 → 逐环分解为第 03–05 环的出环阈值。后四环每一轮的数据，都会反过来修订这三个答案。" },
   { num:"02", name:"信任原点", en:"Trust Genesis", hex:"#648ad0",
     parts:["首购市场反馈","单店场景化事件营销"],
     thesis:"在高浓度物理场景中完成价值主张的首次证实，建立品牌的第一批信任源点。",
@@ -342,7 +326,7 @@ const INNER = [
       "<b>信任凭证的采集机制</b>：现场即完成素材与用户信息的结构化留存"],
     outputs:["可分发的信任凭证（真实影像、原话、场景素材）","可识别的用户档案（带标签的可触达用户池）"],
     gate:"单场事件沉淀的<b>可用信任凭证数量</b>与<b>新增可触达用户数</b>达到预设门槛。",
-    note:"场景化事件的战略产出<b>并非当期销售转化</b>，而是上述两类可迁移资产。缺失该产出的活动，属于费用而非投资。" },
+    note:"场景化事件的战略产出<b>并非当期销售转化</b>，而是上述两类可迁移资产。缺失该产出的活动，属于费用而非投资。<br><br>本环同时校验三问的前两问：<b>「我们做什么」</b>是否被现场体验真实传递，<b>「客户在哪里」</b>是否被实际到场的人群证实。" },
   { num:"03", name:"用户资产", en:"User Equity", hex:"#436dbe",
     parts:["数据沉淀与反馈","分层口碑激励运营"],
     thesis:"将一次性体验者，转化为具备结构、可被分层运营的用户资产。",
@@ -352,7 +336,7 @@ const INNER = [
       "<b>高价值层的深度关系经营</b>：从交易关系转为共创关系"],
     outputs:["用户分层模型","口碑激励机制","高价值用户画像"],
     gate:"能够明确识别并描述<b>贡献度最高的头部用户群体及其共性特征</b>。识别不出，即表明分层尚未成立。",
-    note:"本环虽在轮上占一位，实为<b>飞轮的数据轴心</b>——其余四环均需向此写入数据、并从此读取洞察。数据沉淀若仅发生在单一节点，飞轮丧失自我校准能力。" },
+    note:"本环虽在轮上占一位，实为<b>飞轮的数据轴心</b>——其余四环均需向此写入数据、并从此读取洞察。数据沉淀若仅发生在单一节点，飞轮丧失自我校准能力。<br><br>分层标准即<b>「我们的目标是什么」</b>的人群化表达：目标不同，头部用户的定义就不同。" },
   { num:"04", name:"认知放大", en:"Perception Amplification", hex:"#2451a9",
     parts:["线上内容矩阵放大","广域转化信任建立"],
     thesis:"将线下生产的信任，通过线上内容矩阵分发至物理半径之外的潜在人群，完成从局部体验到广域认知的跃迁。",
@@ -362,7 +346,7 @@ const INNER = [
       "<b>转化路径承接设计</b>：广域流量落到可测量的转化终点"],
     outputs:["内容矩阵地图","素材再创作管线","广域转化承接路径"],
     gate:"信任不可宣称，只可测量——以<b>未到店人群的转化率</b>为唯一度量。该指标上行，方视为信任建立成功。",
-    note:"本环成果直接回流第二环，降低下一轮首购获取成本。<b>这是内环唯一的真实闭环回路。</b>素材一旦转为凭空生产，飞轮即退化为付费流量采买。" },
+    note:"本环成果直接回流第二环，降低下一轮首购获取成本。<b>这是内环唯一的真实闭环回路。</b>素材一旦转为凭空生产，飞轮即退化为付费流量采买。<br><br>未到店人群的转化率，是<b>「我们的目标是什么」</b>在内环末段的量化形态。" },
   { num:"05", name:"品牌复利", en:"Brand Compounding", hex:"#0d3789",
     parts:["渠道规模化复制","多维品牌资产沉淀"],
     thesis:"在模型自转得到验证后进行规模化复制，并将复制过程中的势能沉淀为可继承的品牌资产。",
@@ -372,7 +356,7 @@ const INNER = [
       "<b>四维品牌资产归集</b>：认知 / 关系 / 内容 / 能力，逐维建档"],
     outputs:["可复制的单店作业标准","渠道扩张路线图","四维品牌资产台账"],
     gate:"<b>进入阀门</b>：仅当自然经营周期（剔除事件加持）下的单店模型为正，且新客中<b>非付费来源占比</b>呈上升趋势时，方可送入阀门校验。",
-    note:"本环的产出直接决定外环能否启动——沉淀得越结构化，<b>能力迁移包</b>越薄、越好带走。" }
+    note:"本环的产出直接决定外环能否启动——沉淀得越结构化，<b>能力迁移包</b>越薄、越好带走。<br><br>同时回收三问的修订版本：一轮跑完，<b>做什么 / 客户在哪里 / 目标是什么</b>三个答案都应当已被真实数据修订过一次。" }
 ];
 
 const OUTER = [
@@ -536,8 +520,27 @@ function buildRotor(svgId, panelId, rings, hubText, seamText){
   select(0);
 }
 
+/* 横屏看板：窄视口整体等比缩放，始终保持左右三栏 */
+const BASE=1300, fitbox=document.getElementById("fitbox"), wrapEl=document.querySelector(".wrap");
+function fitBoard(){
+  const vw=document.documentElement.clientWidth;
+  const s=Math.min(1, vw/BASE);
+  if(s<1){
+    wrapEl.style.width=BASE+"px";
+    wrapEl.style.transform="scale("+s+")";
+    fitbox.style.height=(wrapEl.offsetHeight*s)+"px";
+  }else{
+    wrapEl.style.width="";
+    wrapEl.style.transform="";
+    fitbox.style.height="";
+  }
+}
+window.addEventListener("resize",fitBoard);
+if(window.ResizeObserver) new ResizeObserver(fitBoard).observe(wrapEl);
+
 buildRotor("rotor-inner","panel-inner",INNER,"FLYWHEEL CORE","起点抬升 05 → 01");
 buildRotor("rotor-outer","panel-outer",OUTER,"SECOND CURVE","经验回流 05 → 01");
+fitBoard();
 </script>
 </body>
 </html>
